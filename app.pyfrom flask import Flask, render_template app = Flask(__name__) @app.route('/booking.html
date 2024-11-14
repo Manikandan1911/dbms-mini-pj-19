@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking - Murahara Travels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .booking-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .booking-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .booking-container input, 
+        .booking-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .booking-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .booking-container button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <h2>Book Your Ticket</h2>
+        <form action="{{ url_for('book_ticket') }}" method="POST">
+            <label for="route">Select Route:</label>
+            <select name="route" id="route" required>
+                <option value="" disabled selected>Select a route</option>
+                <option value="Kollam - Bangalore">Kollam - Bangalore</option>
+                <option value="Chavara - Bangalore">Chavara - Bangalore</option>
+                <option value="Karunagapally - Bangalore">Karunagapally - Bangalore</option>
+                <!-- Add more routes as needed -->
+            </select>
+
+            <label for="name">Full Name:</label>
+            <input type="text" name="name" id="name" placeholder="Your Full Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Your Email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
+
+            <label for="date">Travel Date:</label>
+            <input type="date" name="date" id="date" required>
+
+            <button type="submit">Book Ticket</button>
+        </form>
+    </div>
+</body>
+</html>
